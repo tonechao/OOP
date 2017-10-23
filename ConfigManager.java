@@ -18,9 +18,9 @@ import org.json.JSONObject;
 public class ConfigManager {
 
     private static String data = "{\"configs\":["
-            + "{\"ext\":\"cs\",\"location\":\"c:\Projects\",\"subDirectory\":\"true\",\"unit\":\"file\",\"remove\":\"false\",\"handler\":\"zip\",\"destination\":\"directory\",\"dir\":\"c:\MyArchieves\",\"connectionString\":\"\"},"
-            + "{\"ext\":\"DOCX\",\"location\":\"c:\Documents\",\"subDirectory\":\"true\",\"unit\":\"file\",\"remove\":\"false\",\"handler\":\"encode\",\"destination\":\"db\",\"dir\":\"\",\"connectionString\":\"MyConnectionString\"},"
-            + "{\"ext\":\"jpg\",\"location\":\"c:\Pictures\",\"subDirectory\":\"true\",\"unit\":\"file\",\"remove\":\"false\",\"handler\":\"\",\"destination\":\"directory\",\"dir\":\"c:\MyArchieves\",\"connectionString\":\"\"}]}";
+            + "{\"ext\":\"cs\",\"location\":\"c:\Projects\",\"subDirectory\":true,\"unit\":\"file\",\"remove\":false,\"handler\":\"zip\",\"destination\":\"directory\",\"dir\":\"c:\MyArchieves\",\"connectionString\":\"\"},"
+            + "{\"ext\":\"DOCX\",\"location\":\"c:\Documents\",\"subDirectory\":true,\"unit\":\"file\",\"remove\":false,\"handler\":\"encode\",\"destination\":\"db\",\"dir\":\"\",\"connectionString\":\"MyConnectionString\"},"
+            + "{\"ext\":\"jpg\",\"location\":\"c:\Pictures\",\"subDirectory\":true,\"unit\":\"file\",\"remove\":false,\"handler\":\"\",\"destination\":\"directory\",\"dir\":\"c:\MyArchieves\",\"connectionString\":\"\"}]}";
     private List<Config> configs;
     private int count;
 
@@ -31,15 +31,15 @@ public class ConfigManager {
             int number = j.getJSONArray("configs").length();
             for (int i = 0; i < number; i++) {
                 Config c = new Config();
-                c.setConnectionString((String) j.getJSONArray("configs").getJSONObject(i).get("connectionString"));
-                c.setDestination((String) j.getJSONArray("configs").getJSONObject(i).get("destination"));
-                c.setDir((String) j.getJSONArray("configs").getJSONObject(i).get("dir"));
-                c.setExt((String) j.getJSONArray("configs").getJSONObject(i).get("ext"));
-                c.setHandler((String) j.getJSONArray("configs").getJSONObject(i).get("handler"));
-                c.setLocation((String) j.getJSONArray("configs").getJSONObject(i).get("location"));
-                c.setRemove((String) j.getJSONArray("configs").getJSONObject(i).get("remove"));
-                c.setSubDirectory((String) j.getJSONArray("configs").getJSONObject(i).get("subDirectory"));
-                c.setUnit((String) j.getJSONArray("configs").getJSONObject(i).get("unit"));
+                c.setConnectionString(j.getJSONArray("configs").getJSONObject(i).getString("connectionString"));
+                c.setDestination(j.getJSONArray("configs").getJSONObject(i).getString("destination"));
+                c.setDir(j.getJSONArray("configs").getJSONObject(i).getString("dir"));
+                c.setExt(j.getJSONArray("configs").getJSONObject(i).getString("ext"));
+                c.setHandler(j.getJSONArray("configs").getJSONObject(i).getString("handler"));
+                c.setLocation(j.getJSONArray("configs").getJSONObject(i).getString("location"));
+                c.setRemove(j.getJSONArray("configs").getJSONObject(i).getBoolean("remove"));
+                c.setSubDirectory(j.getJSONArray("configs").getJSONObject(i).getBoolean("subDirectory"));
+                c.setUnit(j.getJSONArray("configs").getJSONObject(i).getString("unit"));
                 configs.add(c);
             }
         } catch (JSONException ex) {

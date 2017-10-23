@@ -15,15 +15,15 @@ public class Config {
     private String ext;
     private String handler;
     private String location;
-    private String remove;
-    private String subDirectory;
+    private Boolean remove;
+    private Boolean subDirectory;
     private String unit;
 
     public Config() {
    
     }
     
-    public Config(String connectionString, String destination, String dir, String ext, String handler, String location, String remove, String subDirectory, String unit) {
+    public Config(String connectionString, String destination, String dir, String ext, String handler, String location, Boolean remove, Boolean subDirectory, String unit) {
         this.connectionString = connectionString;
         this.destination = destination;
         this.dir = dir;
@@ -83,19 +83,19 @@ public class Config {
         this.location = location;
     }
 
-    public String getRemove() {
+    public Boolean getRemove() {
         return remove;
     }
-
-    public void setRemove(String remove) {
+    
+    public void setRemove(Boolean remove) {
         this.remove = remove;
     }
 
-    public String getSubDirectory() {
+    public Boolean getSubDirectory() {
         return subDirectory;
     }
 
-    public void setSubDirectory(String subDirectory) {
+    public void setSubDirectory(Boolean subDirectory) {
         this.subDirectory = subDirectory;
     }
 
